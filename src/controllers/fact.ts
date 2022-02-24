@@ -10,7 +10,7 @@ const defaultResponseBody = {
   lincese: {
     name: "MIT",
   },
-  version: "1.0.0",
+  version: "1.0.1",
   data: {},
   error: {},
 };
@@ -70,8 +70,20 @@ async function getFact(
 
     const facts = queryResult.rows;
 
+    if (facts.length === 0) {
+      json({
+        ...defaultResponseBody,
+        method: request.method,
+        data: {
+          api_key: apiKey,
+          fact: [],
+        },
+      }, response);
+      return;
+    }
+
     if (typeof single === "string" && single === "false") {
-      if (facts.length === 0 || facts[0].fact.length === 0) {
+      if (facts[0].fact.length === 0) {
         json({
           ...defaultResponseBody,
           method: request.method,
@@ -128,7 +140,7 @@ async function getFact(
       {
         ...defaultResponseBody,
         error: {
-          message: `Internal Server Error\n\n${error.message}`,
+          message: error.message,
           Status: Status.InternalServerError,
         },
       },
@@ -217,7 +229,7 @@ async function setFact(
       {
         ...defaultResponseBody,
         error: {
-          message: `Internal Server Error\n\n${error.message}`,
+          message: error.message,
           Status: Status.InternalServerError,
         },
       },

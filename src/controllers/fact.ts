@@ -10,7 +10,7 @@ const defaultResponseBody = {
   lincese: {
     name: "MIT",
   },
-  version: "1.0.1",
+  version: "1.0.2",
   data: {},
   error: {},
 };
@@ -312,7 +312,7 @@ async function removeFact(
       {
         ...defaultResponseBody,
         error: {
-          message: `Internal Server Error\n\n${error.message}`,
+          message: error.message,
           Status: Status.InternalServerError,
         },
       },

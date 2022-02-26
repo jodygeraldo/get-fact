@@ -4,7 +4,7 @@ import { getFact, removeFact, setFact } from "./controllers/fact.ts";
 const router = new Router();
 
 router.get("/", async ({ response }) => {
-  const html = await Deno.readFile("./public/index.html");
+  const html = await Deno.readFile("./public/build/index.html");
   response.body = html;
   response.headers.set("content-type", "text/html; charset=utf-8");
   response.status = Status.OK;

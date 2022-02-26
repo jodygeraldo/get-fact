@@ -37,6 +37,12 @@ This project uses Postgres as a database, the easiest way is to use
    deno run --allow-net --allow-env --allow-read --watch ./src/app.ts
    ```
 
+5. To watch changes for documentation html and css files, run
+
+   ```sh
+   deno run --allow-net --allow-read --allow-write --watch ./src/public/index.ts
+   ```
+   note: you need to manually save the `/src/public/index.ts` file
 ## License
 
 [MIT](https://opensource.org/licenses/MIT)

@@ -170,14 +170,8 @@ footer {
   }
 }
 
-@media (min-width: 768px) {
-}
-
 @media (min-width: 1024px) {
   .container {
     padding: 0 2rem;
   }
-}
-
-@media (min-width: 1280px) {
 }

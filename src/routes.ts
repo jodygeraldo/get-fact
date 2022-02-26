@@ -11,6 +11,7 @@ router.get("/", async ({ response }) => {
 });
 
 router.get("/public/:path+", async (ctx) => {
+  ctx.response.headers.set("X-Content-Type-Options", "nosniff");
   await send(ctx, ctx.request.url.pathname, {
     root: `${Deno.cwd()}`,
     maxage: 31536000000,

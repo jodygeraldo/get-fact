@@ -6,7 +6,7 @@ const router = new Router();
 router.get("/", async ({ response }) => {
   const html = await Deno.readFile("./public/index.html");
   response.body = html;
-  response.headers.set("content-type", "text/html");
+  response.headers.set("content-type", "text/html; charset=utf-8");
   response.status = Status.OK;
 });
 

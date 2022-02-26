@@ -13,7 +13,8 @@ router.get("/", async ({ response }) => {
 router.get("/public/:path+", async (ctx) => {
   await send(ctx, ctx.request.url.pathname, {
     root: `${Deno.cwd()}`,
-    maxage: 31536000,
+    maxage: 31536000000,
+    immutable: true,
   });
 });
 
